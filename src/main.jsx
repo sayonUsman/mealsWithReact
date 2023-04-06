@@ -2,12 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import Navbar from "./components/Navbar/Navbar";
+import Home from "./components/Home/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navbar></Navbar>,
+    element: <Home></Home>,
+    loader: () =>
+      fetch("https://www.themealdb.com/api/json/v1/1/search.php?s="),
   },
 ]);
 
