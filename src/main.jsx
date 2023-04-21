@@ -5,6 +5,7 @@ import "./index.css";
 import Home from "./components/Home/Home";
 import MealDetails from "./components/MealDetails/MealDetails";
 import Main from "./components/Layout/Main";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,6 @@ const router = createBrowserRouter([
         loader: () =>
           fetch("https://www.themealdb.com/api/json/v1/1/search.php?s="),
       },
-
       {
         path: "/details/:idMeal",
         element: <MealDetails></MealDetails>,
@@ -25,6 +25,10 @@ const router = createBrowserRouter([
           fetch(
             `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.idMeal}`
           ),
+      },
+      {
+        path: "*",
+        element: <ErrorPage></ErrorPage>,
       },
     ],
   },
