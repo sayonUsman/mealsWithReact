@@ -6,7 +6,7 @@ const MealDetails = () => {
   details = details.meals[0];
 
   return (
-    <div className="container mx-auto mt-2 mb-2">
+    <div className="container mx-auto mt-4 mb-2">
       <div className="card bg-base-100 shadow-xl rounded-none md:rounded-lg">
         <div className="rounded-xl">
           <figure>
