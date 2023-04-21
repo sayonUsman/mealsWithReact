@@ -10,7 +10,7 @@ const Navbar = () => {
         </li>
 
         <li className="pr-3 md:pr-9">
-          <Link to="/Linkbout">About</Link>
+          <Link to="/about">About</Link>
         </li>
 
         <li className="pr-3 md:pr-9">
