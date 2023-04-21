@@ -4,22 +4,29 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Home from "./components/Home/Home";
 import MealDetails from "./components/MealDetails/MealDetails";
+import Main from "./components/Layout/Main";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home></Home>,
-    loader: () =>
-      fetch("https://www.themealdb.com/api/json/v1/1/search.php?s="),
-  },
+    element: <Main></Main>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+        loader: () =>
+          fetch("https://www.themealdb.com/api/json/v1/1/search.php?s="),
+      },
 
-  {
-    path: "/details/:idMeal",
-    element: <MealDetails></MealDetails>,
-    loader: ({ params }) =>
-      fetch(
-        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.idMeal}`
-      ),
+      {
+        path: "/details/:idMeal",
+        element: <MealDetails></MealDetails>,
+        loader: ({ params }) =>
+          fetch(
+            `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.idMeal}`
+          ),
+      },
+    ],
   },
 ]);
 
