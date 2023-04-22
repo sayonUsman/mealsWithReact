@@ -6,6 +6,7 @@ import Home from "./components/Home/Home";
 import MealDetails from "./components/MealDetails/MealDetails";
 import Main from "./components/Layout/Main";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
+import LoginPage from "./components/LoginPage/LoginPage";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
           fetch(
             `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.idMeal}`
           ),
+      },
+      {
+        path: "/login",
+        element: <LoginPage></LoginPage>,
       },
       {
         path: "*",
