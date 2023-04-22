@@ -33,6 +33,9 @@ const SignUpPage = () => {
   };
 
   const handleGoogleLogin = () => {
+    setMessage("");
+    setErrorMessage("");
+
     signInWithPopup(auth, googleProvider)
       .then(() => {
         setMessage("Successfully signed in");
