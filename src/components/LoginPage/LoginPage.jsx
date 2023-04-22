@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
 import app from "../../firebase/firebase.config";
 import { Link } from "react-router-dom";
 
-const auth = getAuth(app);
-
 const LoginPage = () => {
+  const auth = getAuth(app);
+  const googleProvider = new GoogleAuthProvider();
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -27,10 +32,20 @@ const LoginPage = () => {
       });
   };
 
+  const handleGoogleLogin = () => {
+    signInWithPopup(auth, googleProvider)
+      .then(() => {
+        setMessage("Successfully signed in");
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+  };
+
   return (
     <div className="container mx-auto">
       <div className="flex">
-        <div className="h-96 flex justify-center items-center mx-auto">
+        <div className="flex mx-auto mt-10 lg:mt-24">
           <div>
             <div className="card w-96 bg-base-100 shadow-xl p-5">
               <h1 className="text-center text-2xl font-bold">Please Login</h1>
@@ -102,6 +117,25 @@ const LoginPage = () => {
                   </div>
                 </div>
               )}
+            </div>
+
+            <div>
+              <h1 className="text-center text-3xl font-semibold mt-10">Or</h1>
+              <h1 className="text-center text-xl font-semibold mt-2 mb-2">
+                Continue with
+              </h1>
+
+              <div className="flex justify-center">
+                <button
+                  onClick={handleGoogleLogin}
+                  className="btn btn-ghost text-lg font-bold"
+                >
+                  Google
+                </button>
+                <button className="btn btn-ghost text-lg font-bold">
+                  Github
+                </button>
+              </div>
             </div>
           </div>
         </div>
