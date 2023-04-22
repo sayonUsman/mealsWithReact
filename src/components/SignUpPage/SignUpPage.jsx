@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import app from "../firebase/firebase.config";
+import app from "../../firebase/firebase.config";
 import { Link } from "react-router-dom";
 
 const auth = getAuth(app);
@@ -33,7 +33,7 @@ const SignUpPage = () => {
         <div className="h-96 flex justify-center items-center mx-auto">
           <div>
             <div className="card w-96 bg-base-100 shadow-xl p-5">
-              <h1 className="text-center text-2xl font-bold">Please Login</h1>
+              <h1 className="text-center text-2xl font-bold">Please Sign Up</h1>
 
               <form onSubmit={handleSubmit}>
                 <div className="form-control mt-10">
@@ -67,7 +67,7 @@ const SignUpPage = () => {
                   <div className="flex mx-auto">
                     <input
                       type="submit"
-                      value="Login"
+                      value="Sign Up"
                       className="btn rounded mt-7"
                     ></input>
                   </div>
@@ -76,8 +76,8 @@ const SignUpPage = () => {
 
               <p className="text-center mt-2">
                 <small>
-                  Already signed up? Please{" "}
-                  <Link to="/signUp" className="text-primary">
+                  Already have an account? Please{" "}
+                  <Link to="/login" className="text-primary">
                     Login
                   </Link>
                 </small>
