@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  GithubAuthProvider,
 } from "firebase/auth";
 import app from "../../firebase/firebase.config";
 import { Link } from "react-router-dom";
@@ -11,6 +12,7 @@ import { Link } from "react-router-dom";
 const LoginPage = () => {
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -37,6 +39,19 @@ const LoginPage = () => {
     setErrorMessage("");
 
     signInWithPopup(auth, googleProvider)
+      .then(() => {
+        setMessage("Successfully signed in");
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+  };
+
+  const handleGithubLogin = () => {
+    setMessage("");
+    setErrorMessage("");
+
+    signInWithPopup(auth, githubProvider)
       .then(() => {
         setMessage("Successfully signed in");
       })
@@ -135,7 +150,11 @@ const LoginPage = () => {
                 >
                   Google
                 </button>
-                <button className="btn btn-ghost text-lg font-bold">
+
+                <button
+                  onClick={handleGithubLogin}
+                  className="btn btn-ghost text-lg font-bold"
+                >
                   Github
                 </button>
               </div>
