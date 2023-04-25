@@ -101,8 +101,8 @@ const SignUpPage = () => {
                     <span className="text-center">Confirm Password</span>
                     <input
                       type="password"
-                      name="password"
-                      id="password"
+                      name="confirmPassword"
+                      id="confirmPassword"
                       className="input input-bordered"
                       required
                     />
