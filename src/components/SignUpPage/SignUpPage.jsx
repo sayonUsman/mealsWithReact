@@ -96,6 +96,19 @@ const SignUpPage = () => {
                   </label>
                 </div>
 
+                <div className="form-control mt-5">
+                  <label className="input-group w-2/5">
+                    <span className="text-center">Confirm Password</span>
+                    <input
+                      type="password"
+                      name="password"
+                      id="password"
+                      className="input input-bordered"
+                      required
+                    />
+                  </label>
+                </div>
+
                 <div className="flex">
                   <div className="flex mx-auto">
                     <input
