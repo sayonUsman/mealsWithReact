@@ -1,30 +1,25 @@
-import React, { useState } from "react";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-  GithubAuthProvider,
-} from "firebase/auth";
-import app from "../../firebase/firebase.config";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/ContextProvider";
 
 const LoginPage = () => {
-  const auth = getAuth(app);
-  const googleProvider = new GoogleAuthProvider();
-  const githubProvider = new GithubAuthProvider();
+  const { loginWithEmailAndPassword, loginWithGoogle, loginWithGithub } =
+    useContext(AuthContext);
+
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const email = event.target.email.value;
-    const password = event.target.password.value;
+
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
     setMessage("");
     setErrorMessage("");
 
-    signInWithEmailAndPassword(auth, email, password)
+    loginWithEmailAndPassword(email, password)
       .then(() => {
         event.target.reset();
         setMessage("Successfully signed in");
@@ -38,7 +33,7 @@ const LoginPage = () => {
     setMessage("");
     setErrorMessage("");
 
-    signInWithPopup(auth, googleProvider)
+    loginWithGoogle()
       .then(() => {
         setMessage("Successfully signed in");
       })
@@ -51,7 +46,7 @@ const LoginPage = () => {
     setMessage("");
     setErrorMessage("");
 
-    signInWithPopup(auth, githubProvider)
+    loginWithGithub()
       .then(() => {
         setMessage("Successfully signed in");
       })

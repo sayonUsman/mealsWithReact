@@ -1,30 +1,32 @@
-import React, { useState } from "react";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-  GithubAuthProvider,
-} from "firebase/auth";
-import app from "../../firebase/firebase.config";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/ContextProvider";
 
 const SignUpPage = () => {
-  const auth = getAuth(app);
-  const googleProvider = new GoogleAuthProvider();
-  const githubProvider = new GithubAuthProvider();
+  const { createNewUser, loginWithGoogle, loginWithGithub } =
+    useContext(AuthContext);
+
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const email = event.target.email.value;
-    const password = event.target.password.value;
+
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const confirmPassword = form.confirmPassword.value;
 
     setMessage("");
     setErrorMessage("");
 
-    createUserWithEmailAndPassword(auth, email, password)
+    if (password !== confirmPassword) {
+      form.reset();
+      setErrorMessage("Your password did not match with the confirm password");
+      return;
+    }
+
+    createNewUser(email, password)
       .then(() => {
         event.target.reset();
         setMessage("Successfully signed up");
@@ -38,7 +40,7 @@ const SignUpPage = () => {
     setMessage("");
     setErrorMessage("");
 
-    signInWithPopup(auth, googleProvider)
+    loginWithGoogle()
       .then(() => {
         setMessage("Successfully signed in");
       })
@@ -51,7 +53,7 @@ const SignUpPage = () => {
     setMessage("");
     setErrorMessage("");
 
-    signInWithPopup(auth, githubProvider)
+    loginWithGithub()
       .then(() => {
         setMessage("Successfully signed in");
       })
