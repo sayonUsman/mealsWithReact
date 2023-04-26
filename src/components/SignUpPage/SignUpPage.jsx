@@ -41,7 +41,9 @@ const SignUpPage = () => {
 
   const sentVerificationEmail = () => {
     sendEmailVerification(auth.currentUser).then(() => {
-      setMessage("Please verify your email address");
+      setMessage(
+        "We have sent a verification email in provided email address. Please verify your email address"
+      );
     });
   };
 
