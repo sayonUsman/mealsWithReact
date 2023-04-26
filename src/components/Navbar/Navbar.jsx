@@ -41,7 +41,7 @@ const Navbar = () => {
 
         {user ? (
           <li className="pr-3 md:pr-9">
-            <Link to="/" onClick={handleLogOut}>
+            <Link to="/login" onClick={handleLogOut}>
               LogOut
             </Link>
           </li>
