@@ -20,6 +20,14 @@ const Navbar = () => {
         <li className="pr-3 md:pr-9">
           <Link to="/services">Services</Link>
         </li>
+
+        <li className="pr-3 md:pr-9">
+          <Link to="/login">Login</Link>
+        </li>
+
+        <li className="pr-3 md:pr-9">
+          <Link to="/signUp">Sign Up</Link>
+        </li>
       </ul>
 
       <div className="flex justify-center items-center">
@@ -29,9 +37,7 @@ const Navbar = () => {
           placeholder="Search"
         />
 
-        <button className="btn rounded mr-5">
-          <Link to="/login">Login</Link>
-        </button>
+        <button className="btn rounded mr-5">Search</button>
       </div>
     </nav>
   );
