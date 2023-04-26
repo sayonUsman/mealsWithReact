@@ -1,11 +1,14 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/ContextProvider";
+import { getAuth, sendEmailVerification } from "firebase/auth";
+import app from "../../firebase/firebase.config";
 
 const SignUpPage = () => {
   const { createNewUser, loginWithGoogle, loginWithGithub } =
     useContext(AuthContext);
 
+  const auth = getAuth(app);
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -28,12 +31,18 @@ const SignUpPage = () => {
 
     createNewUser(email, password)
       .then(() => {
-        event.target.reset();
-        setMessage("Successfully signed up");
+        form.reset();
+        sentVerificationEmail();
       })
       .catch((error) => {
         setErrorMessage(error.message);
       });
+  };
+
+  const sentVerificationEmail = () => {
+    sendEmailVerification(auth.currentUser).then(() => {
+      setMessage("Please verify your email address");
+    });
   };
 
   const handleGoogleLogin = () => {
