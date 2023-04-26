@@ -24,10 +24,6 @@ const Navbar = () => {
         <li className="pr-3 md:pr-9">
           <Link to="/login">Login</Link>
         </li>
-
-        <li className="pr-3 md:pr-9">
-          <Link to="/signUp">Sign Up</Link>
-        </li>
       </ul>
 
       <div className="flex justify-center items-center">
