@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/ContextProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const [message, setMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleLogOut = () => {
+    setMessage("");
+    setErrorMessage("");
+
+    logOut()
+      .than(() => {
+        setMessage("Successfully logOut");
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+  };
+
   return (
     <nav className="flex-column lg:flex lg:h-16 justify-between items-center sm:mt-3 lg:mt-5 pt-3 lg:pt-0 container mx-auto bg-zinc-800 md:text-2xl text-white font-bold sm:rounded">
       <ul className="h-full flex justify-center items-center lg:pl-5">
@@ -21,9 +39,17 @@ const Navbar = () => {
           <Link to="/services">Services</Link>
         </li>
 
-        <li className="pr-3 md:pr-9">
-          <Link to="/login">Login</Link>
-        </li>
+        {user ? (
+          <li className="pr-3 md:pr-9">
+            <Link to="/" onClick={handleLogOut}>
+              LogOut
+            </Link>
+          </li>
+        ) : (
+          <li className="pr-3 md:pr-9">
+            <Link to="/login">Login</Link>
+          </li>
+        )}
       </ul>
 
       <div className="flex justify-center items-center">
