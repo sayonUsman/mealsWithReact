@@ -78,7 +78,7 @@ const SignUpPage = () => {
       <div className="flex">
         <div className="flex mx-auto mt-10 lg:mt-24">
           <div>
-            <div className="card w-96 bg-base-100 shadow-xl p-5">
+            <div className="card rounded-lg w-96 bg-base-100 shadow-md shadow-zinc-800 p-5">
               <h1 className="text-center text-2xl font-bold">Please Sign Up</h1>
 
               <form onSubmit={handleSubmit}>
