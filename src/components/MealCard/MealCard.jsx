@@ -19,9 +19,11 @@ const MealCard = ({ meal }) => {
         </p>
 
         <div className="card-actions justify-end">
-          <button className="btn rounded">
+          <button className="btn rounded btn-ghost">
             <Link to={`/details/${meal.idMeal}`}>Show Details</Link>
           </button>
+
+          <button className="btn rounded">Order Now</button>
         </div>
       </div>
     </div>

@@ -21,32 +21,32 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex-column lg:flex lg:h-16 justify-between items-center sm:mt-3 lg:mt-5 pt-3 lg:pt-0 container mx-auto bg-zinc-800 md:text-2xl text-white font-bold sm:rounded">
+    <nav className="flex-column lg:flex lg:h-16 justify-between items-center sm:mt-3 lg:mt-5 mb-3 pt-3 lg:pt-0 container mx-auto text-slate-500 text-lg md:text-xl font-semibold sm:rounded shadow-lg shadow-zinc-800">
       <ul className="h-full flex justify-center items-center lg:pl-5">
-        <li className="pr-3 md:pr-9">
+        <li className="pr-3 md:pr-9 hover:text-blue-600">
           <Link to="/">Home</Link>
         </li>
 
-        <li className="pr-3 md:pr-9">
+        <li className="pr-3 md:pr-9 hover:text-blue-600">
           <Link to="/about">About</Link>
         </li>
 
-        <li className="pr-3 md:pr-9">
+        <li className="pr-3 md:pr-9 hover:text-blue-600">
           <Link to="/contact">Contact</Link>
         </li>
 
-        <li className="pr-3 md:pr-9">
+        <li className="pr-3 md:pr-9 hover:text-blue-600">
           <Link to="/services">Services</Link>
         </li>
 
         {user ? (
-          <li className="pr-3 md:pr-9">
+          <li className="pr-3 md:pr-9 hover:text-blue-600">
             <Link to="/login" onClick={handleLogOut}>
               LogOut
             </Link>
           </li>
         ) : (
-          <li className="pr-3 md:pr-9">
+          <li className="pr-3 md:pr-9 hover:text-blue-600">
             <Link to="/login">Login</Link>
           </li>
         )}
@@ -59,7 +59,7 @@ const Navbar = () => {
           placeholder="Search"
         />
 
-        <button className="btn rounded mr-5">Search</button>
+        <button className="btn rounded btn-ghost mr-5">Search</button>
       </div>
     </nav>
   );
