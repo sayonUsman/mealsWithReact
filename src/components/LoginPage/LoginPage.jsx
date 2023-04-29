@@ -1,10 +1,13 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/ContextProvider";
 
 const LoginPage = () => {
   const { loginWithEmailAndPassword, loginWithGoogle, loginWithGithub } =
     useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -23,6 +26,7 @@ const LoginPage = () => {
       .then(() => {
         event.target.reset();
         setMessage("Successfully signed in");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setErrorMessage(error.message);
@@ -36,6 +40,7 @@ const LoginPage = () => {
     loginWithGoogle()
       .then(() => {
         setMessage("Successfully signed in");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setErrorMessage(error.message);
@@ -49,6 +54,7 @@ const LoginPage = () => {
     loginWithGithub()
       .then(() => {
         setMessage("Successfully signed in");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setErrorMessage(error.message);
