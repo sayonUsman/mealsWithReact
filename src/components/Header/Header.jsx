@@ -1,11 +1,15 @@
 import React from "react";
+import Marquee from "react-fast-marquee";
+import Typical from "react-typical";
 
 const Header = () => {
   return (
     <div>
-      <h1 className="text-slate-500 text-2xl sm:text-3xl md:text-4xl font-semibold text-center mt-3 mb-5 md:mb-7">
-        Take Your Favourite Meals
-      </h1>
+      <Marquee>
+        <h1 className="text-slate-500 text-md sm:text-xl lg:text-3xl font-semibold text-center md:mt-3 md:mb-3 lg:mb-5">
+          Are You Hungry!!! Take Your Favourite Meals.
+        </h1>
+      </Marquee>
     </div>
   );
 };
