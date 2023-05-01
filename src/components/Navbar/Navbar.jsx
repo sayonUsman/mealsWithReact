@@ -56,12 +56,12 @@ const Navbar = () => {
 
           <div className="flex justify-center items-center">
             <input
-              className="text-base text-black p-1 md:pl-2 rounded m-3 md:m-0"
+              className="text-base text-black p-1 md:pl-2 rounded m-3"
               type="text"
               placeholder="Search"
             />
 
-            <button className="btn rounded btn-ghost">Search</button>
+            <button className="btn rounded btn-ghost mr-1">Search</button>
 
             <div className="flex-none mr-3 lg:mr-5">
               <div className="dropdown dropdown-end">
