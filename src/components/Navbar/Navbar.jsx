@@ -21,50 +21,128 @@ const Navbar = () => {
   };
 
   return (
-    <div className="relative z-10">
-      <div className="fixed top-0 left-0 right-0 bg-white">
-        <nav className="flex-column lg:flex lg:h-16 justify-between items-center pt-3 lg:pt-0 text-slate-500 text-md md:text-lg font-semibold sm:rounded shadow-lg shadow-zinc-800">
-          <ul className="h-full flex justify-center items-center lg:pl-5">
-            <li className="pr-3 md:pr-9 hover:text-blue-600">
-              <Link to="/">Home</Link>
-            </li>
+    <div>
+      <div className="relative z-10">
+        <div className="fixed top-0 left-0 right-0 bg-white">
+          <div className="navbar shadow-lg shadow-zinc-800">
+            <div className="navbar-start">
+              <div className="dropdown">
+                <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h8m-8 6h16"
+                    />
+                  </svg>
+                </label>
 
-            <li className="pr-3 md:pr-9 hover:text-blue-600">
-              <Link to="/about">About</Link>
-            </li>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-compact dropdown-content mt-3 p-2 shadow-md shadow-zinc-800 bg-base-100 rounded-md w-52"
+                >
+                  <li>
+                    <Link to="/" className="btn-ghost mb-1">
+                      Home
+                    </Link>
+                  </li>
 
-            <li className="pr-3 md:pr-9 hover:text-blue-600">
-              <Link to="/contact">Contact</Link>
-            </li>
+                  <li>
+                    <Link to="/about" className="btn-ghost mb-1">
+                      About
+                    </Link>
+                  </li>
 
-            <li className="pr-3 md:pr-9 hover:text-blue-600">
-              <Link to="/services">Services</Link>
-            </li>
+                  <li>
+                    <Link to="/contact" className="btn-ghost mb-1">
+                      Contact
+                    </Link>
+                  </li>
 
-            {user ? (
-              <li className="pr-3 md:pr-9 hover:text-blue-600">
-                <Link to="/login" onClick={handleLogOut}>
-                  LogOut
-                </Link>
-              </li>
-            ) : (
-              <li className="pr-3 md:pr-9 hover:text-blue-600">
-                <Link to="/login">Login</Link>
-              </li>
-            )}
-          </ul>
+                  <li>
+                    <Link to="/services" className="btn-ghost mb-1">
+                      Services
+                    </Link>
+                  </li>
 
-          <div className="flex justify-center items-center">
-            <input
-              className="text-base text-black p-1 md:pl-2 rounded m-3"
-              type="text"
-              placeholder="Search"
-            />
+                  {user ? (
+                    <li>
+                      <Link
+                        to="/login"
+                        onClick={handleLogOut}
+                        className="btn-ghost"
+                      >
+                        Logout
+                      </Link>
+                    </li>
+                  ) : (
+                    <li>
+                      <Link to="/login" className="btn-ghost">
+                        Login
+                      </Link>
+                    </li>
+                  )}
+                </ul>
+              </div>
 
-            <button className="btn rounded btn-ghost mr-1">Search</button>
+              <a className="btn btn-ghost normal-case text-xl">Meals</a>
+            </div>
 
-            <div className="flex-none mr-3 lg:mr-5">
-              <div className="dropdown dropdown-end">
+            <div className="navbar-center hidden lg:flex">
+              <ul className="menu menu-horizontal px-1">
+                <li>
+                  <Link to="/" className="btn-ghost mr-2">
+                    Home
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/about" className="btn-ghost mr-2">
+                    About
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/contact" className="btn-ghost mr-2">
+                    Contact
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/services" className="btn-ghost mr-2">
+                    Services
+                  </Link>
+                </li>
+
+                {user ? (
+                  <li>
+                    <Link
+                      to="/login"
+                      onClick={handleLogOut}
+                      className="btn-ghost"
+                    >
+                      Logout
+                    </Link>
+                  </li>
+                ) : (
+                  <li>
+                    <Link to="/login" className="btn-ghost">
+                      Login
+                    </Link>
+                  </li>
+                )}
+              </ul>
+            </div>
+
+            <div className="navbar-end">
+              <div className="dropdown dropdown-end mr-3 md:mr-4">
                 <label tabIndex={0} className="btn btn-ghost btn-circle">
                   <div className="indicator">
                     <svg
@@ -87,7 +165,7 @@ const Navbar = () => {
 
                 <div
                   tabIndex={0}
-                  className="mt-3 card rounded-md card-compact dropdown-content w-52 bg-base-100 shadow"
+                  className="mt-3 card rounded-md card-compact dropdown-content w-52 bg-base-100 shadow-md shadow-zinc-800 "
                 >
                   <div className="card-body">
                     <span className="font-bold text-lg">0 Items</span>
@@ -101,9 +179,54 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
+
+              {user && (
+                <div className="dropdown dropdown-end mr-3 md:mr-4">
+                  <label
+                    tabIndex={0}
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div className="w-10 rounded-full">
+                      <img
+                        src={
+                          "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1631&q=80"
+                        }
+                      />
+                    </div>
+                  </label>
+
+                  <ul
+                    tabIndex={0}
+                    className="menu menu-compact dropdown-content mt-3 p-2 shadow-md shadow-zinc-800 bg-base-100 rounded-md w-52"
+                  >
+                    <li>
+                      <Link to="/" className="justify-between btn-ghost">
+                        Profile
+                        <span className="badge">New</span>
+                      </Link>
+                    </li>
+
+                    <li>
+                      <Link to="/" className="btn-ghost">
+                        Settings
+                      </Link>
+                    </li>
+
+                    <li>
+                      <Link
+                        to="/login"
+                        onClick={handleLogOut}
+                        className="btn-ghost"
+                      >
+                        Logout
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
-        </nav>
+        </div>
       </div>
     </div>
   );
