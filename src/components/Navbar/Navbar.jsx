@@ -200,14 +200,14 @@ const Navbar = () => {
                     className="menu menu-compact dropdown-content mt-3 p-2 shadow-md shadow-zinc-800 bg-base-100 rounded-md w-52"
                   >
                     <li>
-                      <Link to="/" className="justify-between btn-ghost">
+                      <Link to="/" className="justify-between btn-ghost mb-1">
                         Profile
                         <span className="badge">New</span>
                       </Link>
                     </li>
 
                     <li>
-                      <Link to="/" className="btn-ghost">
+                      <Link to="/" className="btn-ghost mb-1">
                         Settings
                       </Link>
                     </li>
