@@ -79,7 +79,7 @@ const Navbar = () => {
                         onClick={handleLogOut}
                         className="btn-ghost"
                       >
-                        Logout
+                        Log Out
                       </Link>
                     </li>
                   ) : (
@@ -128,7 +128,7 @@ const Navbar = () => {
                       onClick={handleLogOut}
                       className="btn-ghost"
                     >
-                      Logout
+                      Log Out
                     </Link>
                   </li>
                 ) : (
@@ -218,7 +218,7 @@ const Navbar = () => {
                         onClick={handleLogOut}
                         className="btn-ghost"
                       >
-                        Logout
+                        Log Out
                       </Link>
                     </li>
                   </ul>

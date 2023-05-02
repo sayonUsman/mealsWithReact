@@ -76,7 +76,7 @@ const SignUpPage = () => {
   return (
     <div className="container mx-auto">
       <div className="flex">
-        <div className="flex mx-auto mt-32 lg:mt-24 mb-5">
+        <div className="flex mx-auto mt-36 md:mt-48">
           <div>
             <div className="card rounded-lg w-96 bg-base-100 shadow-md shadow-zinc-800 p-5">
               <h1 className="text-center text-2xl font-bold">Please Sign Up</h1>
@@ -90,6 +90,19 @@ const SignUpPage = () => {
                       name="email"
                       id="email"
                       placeholder="info@site.com"
+                      className="input input-bordered"
+                      required
+                    />
+                  </label>
+                </div>
+
+                <div className="form-control mt-5">
+                  <label className="input-group w-2/5">
+                    <span className="text-center">User Name</span>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
                       className="input input-bordered"
                       required
                     />
