@@ -24,7 +24,7 @@ const Navbar = () => {
     <div>
       <div className="relative z-10">
         <div className="fixed top-0 left-0 right-0 bg-white">
-          <div className="navbar shadow-lg shadow-zinc-800">
+          <div className="container mx-auto md:rounded-md navbar shadow-lg shadow-zinc-800">
             <div className="navbar-start">
               <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">

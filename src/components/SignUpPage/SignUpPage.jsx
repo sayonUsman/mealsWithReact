@@ -76,7 +76,7 @@ const SignUpPage = () => {
   return (
     <div className="container mx-auto">
       <div className="flex">
-        <div className="flex mx-auto mt-36 md:mt-48">
+        <div className="flex mx-auto mt-36 lg:mt-48">
           <div>
             <div className="card rounded-lg w-96 bg-base-100 shadow-md shadow-zinc-800 p-5">
               <h1 className="text-center text-2xl font-bold">Please Sign Up</h1>
