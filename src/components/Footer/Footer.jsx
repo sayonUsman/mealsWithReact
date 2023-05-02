@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div>
-      <div className="container mx-auto rounded-t-lg shadow-lg shadow-zinc-800 bg-base-100 mt-5">
+      <div className="container mx-auto rounded-t-lg shadow-lg shadow-zinc-800 bg-base-100 mt-5 mb-5">
         <footer className="footer p-10 text-base-content">
           <div>
             <span className="footer-title">Services</span>
+
             <Link to="/" className="link link-hover">
               Home Delivery
             </Link>
@@ -23,6 +24,7 @@ const Footer = () => {
 
           <div>
             <span className="footer-title">Company</span>
+
             <Link to="/" className="link link-hover">
               About Us
             </Link>
@@ -38,6 +40,7 @@ const Footer = () => {
 
           <div>
             <span className="footer-title">Legal</span>
+
             <Link to="/" className="link link-hover">
               Terms of use
             </Link>
